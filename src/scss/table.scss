@@ -1,10 +1,10 @@
-@import "variables";
-@import "mixins";
+@import 'variables';
+@import 'mixins';
 
 .excel__table {
   position: absolute;
-  right: 0;
   left: 0;
+  right: 0;
   top: $header-height + $toolbar-height + $formula-height;
   overflow-x: auto;
   padding-bottom: 2px;
@@ -17,6 +17,7 @@
   }
 
   .row-info {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,10 +30,10 @@
 
   .row-data {
     display: flex;
-
   }
 
   .column {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,7 +51,7 @@
     padding: 5px;
     width: $cell-width;
     height: 100%;
-    border: 1px solid #e2e2e3;
+    border: 1px solid #e2e3e3;
     border-top: 0;
     border-left: 0;
     color: #111;
@@ -59,9 +60,40 @@
 
     &.selected {
       border: none;
-      outline: 2px solid #3c74ff;
+      outline: 2px solid $primary-color;
       z-index: 2;
     }
   }
 
+  .col-resize,
+  .row-resize {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: $primary-color;
+    opacity: 0;
+    z-index: 1000;
+
+    &:hover {
+      opacity: 1 !important;
+    }
+  }
+
+  .col-resize {
+    top: 0;
+    width: 4px;
+
+    &:hover {
+      cursor: col-resize;
+    }
+  }
+
+  .row-resize {
+    left: 0;
+    height: 4px;
+
+    &:hover {
+      cursor: row-resize;
+    }
+  }
 }
